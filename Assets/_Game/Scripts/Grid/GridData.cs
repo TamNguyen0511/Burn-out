@@ -45,6 +45,21 @@ namespace _Game.Scripts.Grid
 
             return true;
         }
+
+        public int GetRepresentationIndex(Vector3Int gridPosition)
+        {
+            if (_placedObjects.ContainsKey(gridPosition)==false)
+                return -1;
+            return _placedObjects[gridPosition].PlacedObjectIndex;
+        }
+
+        public void RemoveObjectAt(Vector3Int gridPosition)
+        {
+            foreach (var pos in _placedObjects[gridPosition].OccupiedPositions)
+            {
+                _placedObjects.Remove(pos);
+            }
+        }
     }
 
     public class PlacementData
