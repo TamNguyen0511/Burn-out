@@ -1,5 +1,4 @@
 ﻿using System;
-using Doozy.Runtime.Colors.Models;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Vector2 = System.Numerics.Vector2;
