@@ -1,28 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
-
-public class MoveTarget : MonoBehaviour
+﻿using UnityEngine;
+namespace _Game.Scripts.Grid
 {
-    public LayerMask HitLayers;
-
-    private void Update()
+    public class MoveTarget : MonoBehaviour
     {
-        //If the player has left clicked
-        if (Input.GetMouseButtonDown(0)) 
+        public LayerMask HitLayers;
+
+        private void Update()
         {
-            //Get the mouse Position
-            Vector3 mouse = Input.mousePosition;
-            //Cast a ray to get where the mouse is pointing at
-            Ray castPoint = Camera.main.ScreenPointToRay(mouse);
-            //Stores the position where the ray hit.
-            RaycastHit hit; 
-            //If the raycast doesnt hit a wall
-            if (Physics.Raycast(castPoint, out hit, Mathf.Infinity, HitLayers)) 
+            //If the player has left clicked
+            if (Input.GetMouseButtonDown(0))
             {
-                //Move the target to the mouse position
-                this.transform.position = hit.point;
+                //Get the mouse Position
+                Vector3 mouse = Input.mousePosition;
+                //Cast a ray to get where the mouse is pointing at
+                Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+                //Stores the position where the ray hit.
+                RaycastHit hit;
+                //If the raycast doesnt hit a wall
+                if (Physics.Raycast(castPoint, out hit, Mathf.Infinity, HitLayers))
+                {
+                    //Move the target to the mouse position
+                    this.transform.position = hit.point;
+                }
             }
         }
     }

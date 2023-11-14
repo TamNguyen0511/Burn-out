@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Serialization;
-using Vector2 = System.Numerics.Vector2;
+﻿using UnityEngine;
 
 namespace _Game.Scripts.Grid.Placement_System
 {
@@ -14,7 +11,6 @@ namespace _Game.Scripts.Grid.Placement_System
         private GameObject _cellIndicator;
         private GameObject _previewObject;
 
-        [FormerlySerializedAs("_previewMaterial")]
         [SerializeField]
         private Material _previewMaterialPrefab;
         private Material _previewMaterialInstance;

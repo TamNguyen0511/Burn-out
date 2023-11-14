@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using UnityEngine;
-using Color = UnityEngine.Color;
-using Vector2 = System.Numerics.Vector2;
+﻿using UnityEngine;
 
 namespace _Game.Scripts.Grid.Placement_System
 {
