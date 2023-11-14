@@ -28,7 +28,7 @@ namespace _Game.Scripts.Grid.Placement_System
             _previewSystem.StopShowingPreview();
         }
 
-        public void OnAnction(Vector3Int gridPosition)
+        public void OnAction(Vector3Int gridPosition)
         {
             GridData selectedData = null;
             if (_furnitureData.CanPlaceObjectAt(gridPosition, Vector2Int.one) == false)

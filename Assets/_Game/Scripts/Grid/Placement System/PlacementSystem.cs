@@ -60,6 +60,8 @@ namespace _Game.Scripts.Grid.Placement_System
 
             _inputManager.OnClicked += PlaceStructure;
             _inputManager.OnExit += StopPlacement;
+            _inputManager.OnRemoving += StartRemoving;
+            _inputManager.OnRotate += Rotating;
         }
 
         private void StopPlacement()
@@ -71,9 +73,17 @@ namespace _Game.Scripts.Grid.Placement_System
 
             _inputManager.OnClicked -= PlaceStructure;
             _inputManager.OnExit -= StopPlacement;
+            _inputManager.OnRemoving -= StartRemoving;
+            _inputManager.OnRotate -= Rotating;
 
             _lastDetectedPosition = Vector3Int.zero;
             _buildingState = null;
+        }
+
+        private void Rotating()
+        {
+            if (_buildingState == null) return;
+            
         }
 
         public void StartRemoving()
@@ -93,7 +103,7 @@ namespace _Game.Scripts.Grid.Placement_System
             Vector3 mousePosition = _inputManager.GetSelectedMapPosition();
             Vector3Int gridPosition = _grid.WorldToCell(mousePosition);
 
-            _buildingState.OnAnction(gridPosition);
+            _buildingState.OnAction(gridPosition);
         }
 
         // private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)

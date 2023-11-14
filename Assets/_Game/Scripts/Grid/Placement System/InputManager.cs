@@ -7,7 +7,8 @@ namespace _Game.Scripts.Grid.Placement_System
 {
     public class InputManager : MonoBehaviour
     {
-        public event Action OnClicked, OnExit;
+        public KeyCode Click, EscapeBuildMode, Removing, Rotate;
+        public event Action OnClicked, OnExit, OnRemoving, OnRotate;
 
         [SerializeField]
         private Camera _sceneCamera;
@@ -18,10 +19,14 @@ namespace _Game.Scripts.Grid.Placement_System
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKey(Click))
                 OnClicked?.Invoke();
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(EscapeBuildMode))
                 OnExit?.Invoke();
+            if (Input.GetKey(Removing))
+                OnRemoving?.Invoke();
+            if (Input.GetKeyDown(Rotate))
+                OnRotate?.Invoke();
         }
 
         public bool IsPointerOverUI() => EventSystem.current.IsPointerOverGameObject();

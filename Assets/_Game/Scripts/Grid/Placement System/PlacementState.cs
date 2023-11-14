@@ -5,7 +5,7 @@ namespace _Game.Scripts.Grid.Placement_System
     public interface IBuildingState
     {
         void EndState();
-        void OnAnction(Vector3Int gridPosition);
+        void OnAction(Vector3Int gridPosition);
         void UpdateState(Vector3Int gridPosition);
     }
 
@@ -44,7 +44,7 @@ namespace _Game.Scripts.Grid.Placement_System
             _previewSystem.StopShowingPreview();
         }
 
-        public void OnAnction(Vector3Int gridPosition)
+        public void OnAction(Vector3Int gridPosition)
         {
             bool placementValidity = CheckPlacementValidity(gridPosition, _selectedObjectIndex);
             if (!placementValidity) return;
