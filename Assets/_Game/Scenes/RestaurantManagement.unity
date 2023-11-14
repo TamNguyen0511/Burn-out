@@ -167,6 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de091aff3fb4196bb6136a2981044fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Click: 0
+  EscapeBuildMode: 0
+  Removing: 0
+  Rotate: 0
   _sceneCamera: {fileID: 813181216}
   _placementLayerMask:
     serializedVersion: 2

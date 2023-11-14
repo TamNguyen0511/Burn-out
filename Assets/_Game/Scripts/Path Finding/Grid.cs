@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+
 namespace _Game.Scripts.Grid
 {
     public class Grid : MonoBehaviour
@@ -8,6 +9,7 @@ namespace _Game.Scripts.Grid
         public Transform StartPosition;
         // This is the mask that the program will look for when trying to find obstructions to the path.
         public LayerMask WallMask;
+        public string FloorTag = "Floor";
         // A vector2 to store the width and height of the graph in world units.
         public Vector2 GridWorldSize;
         // This stores how big each square on the graph will be
@@ -59,18 +61,33 @@ namespace _Game.Scripts.Grid
                                          Vector3.forward * (y * _nodeDiameter + NodeRadius);
 
                     // Make the node a wall
-                    bool wall = true;
+                    bool wall = false;
 
                     // If the node is not being obstructed
                     // Quick collision check against the current node and anything in the world at its position. If it is colliding with an object with a WallMask,
-                    // The if statement will return false.
+                    // The if statement will return false
 
-                    if (Physics.CheckSphere(worldPoint, NodeRadius, WallMask))
+                    // if (Physics.CheckSphere(worldPoint, NodeRadius, WallMask))
+                    // {
+                    //     // Object is not a wall
+                    //     wall = true;
+                    // }
+                    var collidedObjects = Physics.OverlapSphere(worldPoint, NodeRadius, WallMask);
+                    if (collidedObjects.Length > 0)
                     {
-                        // Object is not a wall
-                        wall = false;
+                        foreach (Collider collidedObject in collidedObjects)
+                        {
+                            if (collidedObject.CompareTag(FloorTag))
+                            {
+                                wall = false;
+                                break;
+                            }
+                            else
+                            {
+                                wall = true;
+                            }
+                        }
                     }
-
                     // Create a new node in the array.
                     _nodeArray[x, y] = new Node(wall, worldPoint, x, y);
                 }
@@ -184,12 +201,12 @@ namespace _Game.Scripts.Grid
                     if (n.IsWall)
                     {
                         //Set the color of the node
-                        Gizmos.color = Color.white;
+                        Gizmos.color = Color.yellow;
                     }
                     else
                     {
                         //Set the color of the node
-                        Gizmos.color = Color.yellow;
+                        Gizmos.color = Color.white;
                     }
 
 //If the final path is not empty

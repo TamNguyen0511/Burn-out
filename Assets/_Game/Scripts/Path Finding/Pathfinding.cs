@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Game.Scripts.Grid
@@ -68,20 +69,22 @@ namespace _Game.Scripts.Grid
                 {
                     // Calculate the final path
                     GetFinalPath(startNode, targetNode);
+                    Debug.Log("Final path: " + GridReference.FinalPath.Count);
                 }
 
                 // Loop through each neighbor of the current node
                 foreach (Node neighborNode in GridReference.GetNeighboringNodes(currentNode))
                 {
                     // If the neighbor is a wall or has already been checked
-                    if (!neighborNode.IsWall || closedList.Contains(neighborNode))
+                    if (neighborNode.IsWall || closedList.Contains(neighborNode))
                     {
                         // Skip it
                         continue;
                     }
 
+                    // Get the F cost of that neighbor
                     int moveCost = currentNode.GCost +
-                                   GetManhattenDistance(currentNode, neighborNode); //Get the F cost of that neighbor
+                                   GetManhattenDistance(currentNode, neighborNode);
 
                     // If the f cost is greater than the g cost or it is not in the open list
                     if (moveCost < neighborNode.GCost || !openList.Contains(neighborNode))

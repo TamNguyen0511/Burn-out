@@ -2,6 +2,7 @@
 
 namespace _Game.Scripts.Grid
 {
+    [System.Serializable]
     public class Node
     {
         //X, Y Position in the Node Array
