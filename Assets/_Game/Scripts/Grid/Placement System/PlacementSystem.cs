@@ -4,6 +4,8 @@ namespace _Game.Scripts.Grid.Placement_System
 {
     public class PlacementSystem : MonoBehaviour
     {
+        #region Serialize variables
+
         [SerializeField]
         private InputManager _inputManager;
         [SerializeField]
@@ -13,16 +15,26 @@ namespace _Game.Scripts.Grid.Placement_System
         [SerializeField]
         private GameObject _gridVisualization;
 
-        private GridData _floorData, _furnitureData;
-
         [SerializeField]
         private PreviewSystem _preview;
 
-        private Vector3Int _lastDetectedPosition = Vector3Int.zero;
-
         [SerializeField]
         private ObjectPlacer _objectPlacer;
+
+        #endregion
+
+        #region Local variable
+
+        private GridData _floorData, _furnitureData;
+
+
+        private Vector3Int _lastDetectedPosition = Vector3Int.zero;
+
         private IBuildingState _buildingState;
+
+        #endregion
+
+        #region Unity functions
 
         private void Start()
         {
@@ -45,6 +57,14 @@ namespace _Game.Scripts.Grid.Placement_System
             }
         }
 
+        #endregion
+
+        #region Class function
+
+        /// <summary>
+        /// Enter placement mode 
+        /// </summary>
+        /// <param name="ID">ID of placing object, with 0 is the floor and so on</param>
         public void StartPlacement(int ID)
         {
             StopPlacement();
@@ -59,6 +79,9 @@ namespace _Game.Scripts.Grid.Placement_System
             _inputManager.OnRotate += Rotating;
         }
 
+        /// <summary>
+        /// Exit placement mode 
+        /// </summary>
         private void StopPlacement()
         {
             if (_buildingState == null) return;
@@ -75,22 +98,30 @@ namespace _Game.Scripts.Grid.Placement_System
             _buildingState = null;
         }
 
+        /// <summary>
+        /// Rotate placing object
+        /// </summary>
         private void Rotating()
         {
             if (_buildingState == null) return;
-            
         }
 
+        /// <summary>
+        /// Enter remove objects mdoe
+        /// </summary>
         public void StartRemoving()
         {
             StopPlacement();
             _gridVisualization.SetActive(true);
             _buildingState = new RemovingState(_grid, _preview, _floorData, _furnitureData, _objectPlacer);
-            
+
             _inputManager.OnClicked += PlaceStructure;
             _inputManager.OnExit += StopPlacement;
         }
 
+        /// <summary>
+        /// Place object handle
+        /// </summary>
         private void PlaceStructure()
         {
             if (_inputManager.IsPointerOverUI()) return;
@@ -107,5 +138,7 @@ namespace _Game.Scripts.Grid.Placement_System
         //
         //     return selectedData.CanPlaceObjectAt(gridPosition, _database.ObjectsData[selectedObjectIndex].Size);
         // }
+
+        #endregion
     }
 }
