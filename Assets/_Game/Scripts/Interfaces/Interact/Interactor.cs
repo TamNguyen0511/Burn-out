@@ -31,6 +31,7 @@ namespace _Game.Scripts.Interact
 
         #region Unity functions
 
+        // TODO: open commented UI promt code
         private void Update()
         {
             _numFound = Physics2D.OverlapCircleNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders,
@@ -42,7 +43,7 @@ namespace _Game.Scripts.Interact
 
                 if (interactable != null)
                 {
-                    if (!_interactionPromtUI.IsDisplayed) _interactionPromtUI.SetUp(_interactable.InteractionPrompt);
+                    // if (!_interactionPromtUI.IsDisplayed) _interactionPromtUI.SetUp(_interactable.InteractionPrompt);
 
                     if (Input.GetKeyDown(KeyCode.E)) _interactable.Interact(this);
                 }
@@ -51,7 +52,7 @@ namespace _Game.Scripts.Interact
             {
                 if (_interactable == null)
                     _interactable = null;
-                if (_interactionPromtUI.IsDisplayed) _interactionPromtUI.Close();
+                // if (_interactionPromtUI.IsDisplayed) _interactionPromtUI.Close();
             }
         }
 

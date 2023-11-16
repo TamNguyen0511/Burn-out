@@ -1,8 +1,10 @@
-﻿namespace _Game.Scripts.Kitchen
+﻿using _Game.Scripts.Interact;
+
+namespace _Game.Scripts.Kitchen
 {
     public interface IKitchenTool
     {
-        public void HandleInput();
-        public void OutputProcess();
+        public void HandleInput(Interactor interactor);
+        public void OutputProcess(Interactor interactor);
     }
 }

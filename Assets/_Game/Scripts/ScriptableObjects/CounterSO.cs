@@ -9,6 +9,7 @@ namespace _Game.Scripts.ScriptableObjects
         public KitchenCounterType CounterType;
         /// Include stat of counter:
         /// process speed, dirty percentage, ...
+        
         public float ProcessingSpeed;
     }
 }

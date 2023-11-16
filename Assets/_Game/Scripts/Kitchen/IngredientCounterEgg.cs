@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.Interact;
+﻿using _Game.Scripts.Characters;
+using _Game.Scripts.Interact;
 using UnityEngine;
 
 namespace _Game.Scripts.Kitchen
@@ -9,10 +10,23 @@ namespace _Game.Scripts.Kitchen
 
         public override bool Interact(Interactor interactor)
         {
-            GameObject egg = Instantiate(DatabaseManager.Instance.KitchenCounterPrefabDictionary[this],
-                CounterTopPoint);
-            egg.transform.localPosition = Vector3.zero;
             return base.Interact(interactor);
+        }
+
+        public override void HandleInput(Interactor interactor)
+        {
+            GameObject egg = Instantiate(DatabaseManager.Instance.KitchenCounterPrefabDictionary[this],
+                interactor.transform);
+            egg.transform.localPosition = Vector3.zero;
+            interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject = egg;
+
+            base.HandleInput(interactor);
+        }
+
+        public override void OutputProcess(Interactor interactor)
+        {
+            Debug.Log("Already holding something");
+            base.OutputProcess(interactor);
         }
     }
 }

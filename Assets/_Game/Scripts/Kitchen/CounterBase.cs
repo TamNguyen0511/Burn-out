@@ -1,4 +1,5 @@
-﻿using _Game.Scripts.Interact;
+﻿using _Game.Scripts.Characters;
+using _Game.Scripts.Interact;
 using _Game.Scripts.ScriptableObjects;
 using UnityEngine;
 
@@ -18,7 +19,10 @@ namespace _Game.Scripts.Kitchen
 
         public virtual bool Interact(Interactor interactor)
         {
-            Debug.Log($"Interacted with: {interactor.gameObject.name}");
+            Debug.Log($"{interactor.gameObject.name} try to interacted with: {gameObject.name}");
+            if (interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject == null)
+                HandleInput(interactor);
+            else OutputProcess(interactor);
             return true;
         }
 
@@ -26,14 +30,14 @@ namespace _Game.Scripts.Kitchen
 
         #region Implement from IKitchenTool
 
-        public virtual void HandleInput()
+        public virtual void HandleInput(Interactor interactor)
         {
-            Debug.Log("");
+            Debug.Log($"Give {CounterStat.name} to {interactor.gameObject.name}");
         }
 
-        public virtual void OutputProcess()
+        public virtual void OutputProcess(Interactor interactor)
         {
-            throw new System.NotImplementedException();
+            Debug.Log($"{interactor.gameObject.name} take {CounterStat.name} from {gameObject.name}");
         }
 
         #endregion
