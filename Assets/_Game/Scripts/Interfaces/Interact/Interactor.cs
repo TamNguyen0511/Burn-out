@@ -44,7 +44,7 @@ namespace _Game.Scripts.Interact
                 {
                     if (!_interactionPromtUI.IsDisplayed) _interactionPromtUI.SetUp(_interactable.InteractionPrompt);
 
-                    // if (Keyboard.current.eKey.wasPressedThisFrame) _interactable.Interact(this);
+                    if (Input.GetKeyDown(KeyCode.E)) _interactable.Interact(this);
                 }
             }
             else

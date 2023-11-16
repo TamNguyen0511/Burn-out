@@ -18,7 +18,8 @@ namespace _Game.Scripts.Kitchen
 
         public virtual bool Interact(Interactor interactor)
         {
-            throw new System.NotImplementedException();
+            Debug.Log($"Interacted with: {interactor.gameObject.name}");
+            return true;
         }
 
         #endregion
@@ -27,7 +28,7 @@ namespace _Game.Scripts.Kitchen
 
         public virtual void HandleInput()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("");
         }
 
         public virtual void OutputProcess()
