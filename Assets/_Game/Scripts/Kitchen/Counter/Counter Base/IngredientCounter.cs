@@ -1,24 +1,29 @@
 ﻿using _Game.Scripts.Characters;
+using _Game.Scripts.Enums;
 using _Game.Scripts.Interact;
 using UnityEngine;
 
 namespace _Game.Scripts.Kitchen
 {
-    public class IngredientCounterEgg : CounterBase
+    public class IngredientCounter : CounterBase
     {
         public Transform CounterTopPoint;
 
         public override bool Interact(Interactor interactor)
         {
+            if (interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject == null)
+                HandleInput(interactor);
+            else OutputProcess(interactor);
+
             return base.Interact(interactor);
         }
 
         public override void HandleInput(Interactor interactor)
         {
-            GameObject egg = Instantiate(DatabaseManager.Instance.KitchenCounterPrefabDictionary[this],
+            GameObject ingredient = Instantiate(DatabaseManager.Instance.KitchenCounterPrefabDictionary[this],
                 interactor.transform);
-            egg.transform.localPosition = Vector3.zero;
-            interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject = egg;
+            ingredient.transform.localPosition = Vector3.zero;
+            interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject = ingredient;
 
             base.HandleInput(interactor);
         }

@@ -20,9 +20,6 @@ namespace _Game.Scripts.Kitchen
         public virtual bool Interact(Interactor interactor)
         {
             Debug.Log($"{interactor.gameObject.name} try to interacted with: {gameObject.name}");
-            if (interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject == null)
-                HandleInput(interactor);
-            else OutputProcess(interactor);
             return true;
         }
 

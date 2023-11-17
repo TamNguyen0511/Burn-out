@@ -382,21 +382,84 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KitchenCounterPrefabDictionary:
     keyData:
-    - {fileID: 1051210326}
+    - {fileID: 0}
     valueData:
     - {fileID: 5597185476224408927, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763, type: 3}
---- !u!114 &1051210326 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 976871737271646128, guid: 7b03da068958fdb45ae3143800d1b47a,
+--- !u!1001 &1240016307
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408923, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597185476224408927, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+        type: 3}
+      propertyPath: m_Name
+      value: Test Egg
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763, type: 3}
+--- !u!1 &1240016308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5597185476224408927, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
     type: 3}
-  m_PrefabInstance: {fileID: 976871737446221286}
+  m_PrefabInstance: {fileID: 1240016307}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53624131131249268fb178866e3550e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1526653498
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,7 +850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410e9dbfd88b43dd8ecfbc347db68849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoldingObject: {fileID: 0}
+  HoldingObject: {fileID: 1240016308}
 --- !u!114 &2141991112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,7 +869,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _interactionPromtUI: {fileID: 0}
-  TestCounter: {fileID: 1051210326}
+  TestCounter: {fileID: 1340127964333352693}
   TestPlayer: {fileID: 2141991110}
 --- !u!1001 &976871737446221286
 PrefabInstance:
@@ -875,8 +938,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test Ingredient Egg Counter
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 976871737271646128, guid: 7b03da068958fdb45ae3143800d1b47a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b03da068958fdb45ae3143800d1b47a, type: 3}
+--- !u!1 &976871737446221287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 976871737271646135, guid: 7b03da068958fdb45ae3143800d1b47a,
+    type: 3}
+  m_PrefabInstance: {fileID: 976871737446221286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &976871737446221288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976871737446221287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fe23fb02e6419191db832eeb5699e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CounterStat: {fileID: 11400000, guid: 257e69efb8711df478fc4e2b575841c1, type: 2}
+  CounterTopPoint: {fileID: 0}
 --- !u!1001 &1340127964333352692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -946,3 +1030,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e395636e18c9ada48a7c001412c03b7c, type: 3}
+--- !u!114 &1340127964333352693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1340127965595771776, guid: e395636e18c9ada48a7c001412c03b7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1340127964333352692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00e69fbe6cd462093252b09cfd00f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
