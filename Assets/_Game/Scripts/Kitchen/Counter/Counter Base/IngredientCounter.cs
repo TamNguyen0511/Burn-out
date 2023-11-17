@@ -7,6 +7,8 @@ namespace _Game.Scripts.Kitchen
 {
     public class IngredientCounter : CounterBase
     {
+        [SerializeField]
+        private GameObject _ingredient;
         public Transform CounterTopPoint;
 
         public override bool Interact(Interactor interactor)
@@ -20,8 +22,7 @@ namespace _Game.Scripts.Kitchen
 
         public override void HandleInput(Interactor interactor)
         {
-            GameObject ingredient = Instantiate(DatabaseManager.Instance.KitchenCounterPrefabDictionary[this],
-                interactor.transform);
+            GameObject ingredient = Instantiate(_ingredient, interactor.transform);
             ingredient.transform.localPosition = Vector3.zero;
             interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject = ingredient;
 
