@@ -23,7 +23,7 @@ namespace _Game.Scripts.Interact
         [ReadOnly]
         private int _numFound;
 
-        private readonly Collider2D[] _colliders = new Collider2D[3];
+        private readonly Collider[] _colliders = new Collider[3];
 
         private IInteractable _interactable;
 
@@ -32,20 +32,32 @@ namespace _Game.Scripts.Interact
         #region Unity functions
 
         // TODO: open commented UI promt code
-        private void Update()
+
+        #endregion
+
+        protected void InteractAction()
         {
-            _numFound = Physics2D.OverlapCircleNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders,
+            // _numFound = Physics2D.OverlapCircleNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders,
+            //     _interactableMask);
+            _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders,
                 _interactableMask);
 
             if (_numFound > 0)
             {
-                var interactable = _colliders[0].GetComponent<IInteractable>();
+                for (int i = 0; i < _numFound; i++)
+                    if (_colliders[i].GetComponent<IInteractable>() != null)
+                    {
+                        _interactable = _colliders[i].GetComponent<IInteractable>();
+                        break;
+                    }
+                // _interactable = _colliders[0].GetComponent<IInteractable>();
 
-                if (interactable != null)
+                if (_interactable != null)
                 {
                     // if (!_interactionPromtUI.IsDisplayed) _interactionPromtUI.SetUp(_interactable.InteractionPrompt);
 
-                    if (Input.GetKeyDown(KeyCode.E)) _interactable.Interact(this);
+                    Debug.Log($"{_interactable}, {this}");
+                    _interactable.Interact(this);
                 }
             }
             else
@@ -55,8 +67,6 @@ namespace _Game.Scripts.Interact
                 // if (_interactionPromtUI.IsDisplayed) _interactionPromtUI.Close();
             }
         }
-
-        #endregion
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()

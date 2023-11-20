@@ -14,7 +14,7 @@ namespace _Game.Scripts.Kitchen
 
         public override bool Interact(Interactor interactor)
         {
-            if (interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject == null)
+            if (interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject == null)
                 HandleInput(interactor);
             else OutputProcess(interactor);
 
@@ -23,9 +23,11 @@ namespace _Game.Scripts.Kitchen
 
         public override void HandleInput(Interactor interactor)
         {
-            GameObject ingredient = Instantiate(_ingredientPrefab, interactor.transform);
+            Debug.Log($"{interactor} is getting from {gameObject.name}");
+            GameObject ingredient = Instantiate(_ingredientPrefab,
+                interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObjectPosition);
             ingredient.transform.localPosition = Vector3.zero;
-            interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject = ingredient;
+            interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject = ingredient;
 
             base.HandleInput(interactor);
         }

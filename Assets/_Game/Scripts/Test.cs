@@ -10,7 +10,7 @@ using UnityEngine;
 public class Test : Interactor
 {
     public CounterBase TestCounter;
-    public CharacterInteractHandle TestPlayer;
+    public PlayerInputHandle TestPlayer;
 
     private void Update()
     {

@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7177525925421355814}
   - component: {fileID: 4856203676200813162}
+  - component: {fileID: 7917177138269704965}
   m_Layer: 0
   m_Name: Free Counter
   m_TagString: Untagged
@@ -80,6 +81,19 @@ MonoBehaviour:
   CounterStat: {fileID: 11400000, guid: 005ca0d020c5e3e47a27442a8d2276ac, type: 2}
   ContainingObject: {fileID: 0}
   CounterTopPoint: {fileID: 7364522466362764820}
+--- !u!65 &7917177138269704965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177525925421355813}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &9175809205389437337
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +105,6 @@ GameObject:
   - component: {fileID: 9175809205389437317}
   - component: {fileID: 9175809205389437316}
   - component: {fileID: 9175809205389437319}
-  - component: {fileID: 9175809205389437318}
   m_Layer: 3
   m_Name: Test Free Counter
   m_TagString: Untagged
@@ -164,16 +177,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9175809205389437318
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9175809205389437337}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

@@ -7,5 +7,6 @@ namespace _Game.Scripts.Characters
     {
         // TODO: replace gameobject with ingredient 
         public GameObject HoldingObject;
+        public Transform HoldingObjectPosition;
     }
 }

@@ -18,7 +18,7 @@ namespace _Game.Scripts.Kitchen
 
         public override void HandleInput(Interactor interactor)
         {
-            GameObject objectToHandle = interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle
+            GameObject objectToHandle = interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle
                 .HoldingObject;
 
             if (objectToHandle == null)
@@ -27,12 +27,12 @@ namespace _Game.Scripts.Kitchen
                 return;
             }
 
-            ContainingObject = interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle
+            ContainingObject = interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle
                 .HoldingObject;
             ContainingObject.transform.SetParent(CounterTopPoint.transform);
             ContainingObject.transform.localPosition = Vector3.zero;
 
-            interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle
+            interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle
                 .HoldingObject = null;
 
             base.HandleInput(interactor);
@@ -40,18 +40,19 @@ namespace _Game.Scripts.Kitchen
 
         public override void OutputProcess(Interactor interactor)
         {
-            if (interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject != null)
+            if (interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject != null)
             {
                 Debug.Log(
-                    $"{interactor.gameObject.name} currently holding {interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject.name}, so it cannot holing more object");
+                    $"{interactor.gameObject.name} currently holding {interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject.name}, so it cannot holing more object");
                 return;
             }
 
-            interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject =
+            interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject =
                 ContainingObject;
-            interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject.transform
-                .SetParent(interactor.transform);
-            interactor.GetComponent<CharacterInteractHandle>().CharacterHoldingObjectHandle.HoldingObject.transform
+            interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject.transform
+                .SetParent(interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle
+                    .HoldingObjectPosition);
+            interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject.transform
                 .localPosition = Vector3.zero;
             ContainingObject = null;
 
