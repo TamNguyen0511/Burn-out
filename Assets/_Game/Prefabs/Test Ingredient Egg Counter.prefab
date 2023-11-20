@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 976871737271646130}
   - component: {fileID: 976871737271646133}
   - component: {fileID: 976871737271646132}
-  - component: {fileID: 6273497993282088246}
+  - component: {fileID: 6691843049281760898}
   m_Layer: 0
   m_Name: Test Ingredient Egg Counter
   m_TagString: Untagged
@@ -130,7 +130,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6273497993282088246
+--- !u!114 &6691843049281760898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,10 +139,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 976871737271646135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae1c38f356fc41e594e6abba5b0368a5, type: 3}
+  m_Script: {fileID: 11500000, guid: c2fe23fb02e6419191db832eeb5699e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CounterStat: {fileID: 11400000, guid: 257e69efb8711df478fc4e2b575841c1, type: 2}
-  _ingredient: {fileID: 5597185476224408927, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
+  CounterStat: {fileID: 11400000, guid: 005ca0d020c5e3e47a27442a8d2276ac, type: 2}
+  _ingredientPrefab: {fileID: 5597185476224408927, guid: 71ebd7fcd3a660c46a01fc5f9cf3c763,
     type: 3}
   CounterTopPoint: {fileID: 116102932091716547}
