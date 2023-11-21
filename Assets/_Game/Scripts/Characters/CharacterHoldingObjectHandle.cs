@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+﻿using _Game.Scripts.Kitchen;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace _Game.Scripts.Characters
 {
     public class CharacterHoldingObjectHandle : MonoBehaviour
     {
-        // TODO: replace gameobject with ingredient 
-        public GameObject HoldingObject;
+        public Ingredient HoldingObject;
         public Transform HoldingObjectPosition;
     }
 }

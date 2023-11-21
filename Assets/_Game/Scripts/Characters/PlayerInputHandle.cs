@@ -29,7 +29,8 @@ namespace _Game.Scripts.Characters
         private void Start()
         {
             InputManager.Instance.OnInteract += HandleInteraction;
-            
+            InputManager.Instance.OnAction += HandleAction;
+
             // TODO: remove this duo to testing purpose
             if (CharacterHoldingObjectHandle == null && GetComponent<CharacterHoldingObjectHandle>() != null)
                 CharacterHoldingObjectHandle = GetComponent<CharacterHoldingObjectHandle>();
@@ -41,7 +42,7 @@ namespace _Game.Scripts.Characters
         }
 
         #endregion
-        
+
         #region Local functions
 
         private void HandleMovement()
@@ -93,6 +94,11 @@ namespace _Game.Scripts.Characters
         private void HandleInteraction(object sender, System.EventArgs e)
         {
             InteractAction();
+        }
+
+        private void HandleAction(object sender, System.EventArgs e)
+        {
+            ActionEvent();
         }
 
         #endregion

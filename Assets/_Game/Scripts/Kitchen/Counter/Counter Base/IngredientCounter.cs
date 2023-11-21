@@ -9,7 +9,7 @@ namespace _Game.Scripts.Kitchen
     public class IngredientCounter : CounterBase
     {
         [SerializeField]
-        private GameObject _ingredientPrefab;
+        private Ingredient _ingredientPrefab;
         public Transform CounterTopPoint;
 
         public override bool Interact(Interactor interactor)
@@ -24,10 +24,13 @@ namespace _Game.Scripts.Kitchen
         public override void HandleInput(Interactor interactor)
         {
             Debug.Log($"{interactor} is getting from {gameObject.name}");
-            GameObject ingredient = Instantiate(_ingredientPrefab,
+            Ingredient ingredient = Instantiate(_ingredientPrefab,
                 interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObjectPosition);
+            
             ingredient.transform.localPosition = Vector3.zero;
+            ingredient.ChangeState(IngredientState.Raw);
             interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject = ingredient;
+            
 
             base.HandleInput(interactor);
         }

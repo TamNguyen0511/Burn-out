@@ -18,7 +18,7 @@ namespace _Game.Scripts.Managers
 
         #region Events
 
-        public event EventHandler OnMove, OnInteract;
+        public event EventHandler OnMove, OnInteract, OnAction, OnActionOut;
 
         #endregion
 
@@ -36,6 +36,8 @@ namespace _Game.Scripts.Managers
         private void Start()
         {
             _playerInput.Player.Interact.performed += OnInteractPerform;
+            _playerInput.Player.Action.performed += OnActionPerform;
+            _playerInput.Player.Action.canceled -= OnActionPerform;
         }
 
         #endregion
@@ -52,6 +54,15 @@ namespace _Game.Scripts.Managers
         private void OnInteractPerform(InputAction.CallbackContext obj)
         {
             OnInteract?.Invoke(this, EventArgs.Empty);
+        }
+        private void OnActionPerform(InputAction.CallbackContext obj)
+        {
+            OnAction?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnActionCancel(InputAction.CallbackContext obj)
+        {
+            OnActionOut?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion

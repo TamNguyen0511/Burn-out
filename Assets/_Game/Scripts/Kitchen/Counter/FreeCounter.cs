@@ -18,7 +18,7 @@ namespace _Game.Scripts.Kitchen
 
         public override void HandleInput(Interactor interactor)
         {
-            GameObject objectToHandle = interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle
+            Ingredient objectToHandle = interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle
                 .HoldingObject;
 
             if (objectToHandle == null)

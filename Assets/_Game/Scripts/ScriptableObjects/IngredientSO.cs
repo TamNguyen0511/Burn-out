@@ -1,6 +1,7 @@
 ﻿using _Game.Scripts.Configs.Editors;
 using _Game.Scripts.Enums;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _Game.Scripts.ScriptableObjects
@@ -9,29 +10,18 @@ namespace _Game.Scripts.ScriptableObjects
     public class IngredientSO : ScriptableObject
     {
         [SerializeField]
-        private IngredientState _ingredientCurrentState;
+        private string _ingredientName;
 
         /// <summary>
         /// Showable Dictionary for this ingredient state and object
         /// </summary>
         [SerializeField]
-        private UnitySerializedDictionary<IngredientState, IngredientStateVisualInformation> IngredientStateAndPrefab =
+        private UnitySerializedDictionary<IngredientState, IngredientStateVisualInformation> _ingredientStateAndPrefab =
             new UnitySerializedDictionary<IngredientState, IngredientStateVisualInformation>();
 
-        public void ChangeState(IngredientState newState, GameObject ingredientPrefabVisualObject = null,
-            Image ingredientImageVisual = null)
+        public UnitySerializedDictionary<IngredientState, IngredientStateVisualInformation> IngredientStateAndPrefab
         {
-            _ingredientCurrentState = newState;
-
-            if (ingredientPrefabVisualObject != null)
-            {
-                ingredientPrefabVisualObject = IngredientStateAndPrefab[_ingredientCurrentState].IngredientStatePrefab;
-            }
-
-            if (ingredientImageVisual != null)
-            {
-                ingredientImageVisual.sprite = IngredientStateAndPrefab[_ingredientCurrentState].IngredientStateSprite;
-            }
+            get => _ingredientStateAndPrefab;
         }
     }
 

@@ -1,11 +1,12 @@
 ﻿using _Game.Scripts.Characters;
 using _Game.Scripts.Interact;
+using _Game.Scripts.Interfaces.Interact;
 using _Game.Scripts.ScriptableObjects;
 using UnityEngine;
 
 namespace _Game.Scripts.Kitchen
 {
-    public class CounterBase : MonoBehaviour, IInteractable, IKitchenTool
+    public class CounterBase : MonoBehaviour, IInteractable, IKitchenTool, IActionable
     {
         #region Serialize vairiables
 
@@ -21,6 +22,11 @@ namespace _Game.Scripts.Kitchen
         {
             Debug.Log($"{interactor.gameObject.name} try to interacted with: {gameObject.name}");
             return true;
+        }
+
+        public virtual void Action(Interactor interactor)
+        {
+            
         }
 
         #endregion

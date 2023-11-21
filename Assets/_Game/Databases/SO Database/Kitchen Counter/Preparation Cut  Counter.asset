@@ -10,6 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a984e037d17b430b91c566d11a99e89c, type: 3}
-  m_Name: Preparation Counter
+  m_Name: Preparation Cut  Counter
   m_EditorClassIdentifier: 
-  CounterType: 0
+  CounterName: Cut Counter
+  CounterType: 3
+  ProcessingSpeed: 2
