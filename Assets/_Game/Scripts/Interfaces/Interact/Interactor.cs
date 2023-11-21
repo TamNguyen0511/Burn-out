@@ -68,7 +68,8 @@ namespace _Game.Scripts.Interact
                 // if (_interactionPromtUI.IsDisplayed) _interactionPromtUI.Close();
             }
         }
-        protected void ActionEvent()
+
+        protected void ActionPerform()
         {
             // _numFound = Physics2D.OverlapCircleNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders,
             //     _interactableMask);
@@ -91,6 +92,39 @@ namespace _Game.Scripts.Interact
 
                     Debug.Log($"{_actionable}, {this}");
                     _actionable.Action(this);
+                }
+            }
+            else
+            {
+                if (_actionable == null)
+                    _actionable = null;
+                // if (_interactionPromtUI.IsDisplayed) _interactionPromtUI.Close();
+            }
+        }
+
+        protected void ActionCancel()
+        {
+            // _numFound = Physics2D.OverlapCircleNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders,
+            //     _interactableMask);
+            _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders,
+                _interactableMask);
+
+            if (_numFound > 0)
+            {
+                for (int i = 0; i < _numFound; i++)
+                    if (_colliders[i].GetComponent<IActionable>() != null)
+                    {
+                        _actionable = _colliders[i].GetComponent<IActionable>();
+                        break;
+                    }
+                // _interactable = _colliders[0].GetComponent<IInteractable>();
+
+                if (_actionable != null)
+                {
+                    // if (!_interactionPromtUI.IsDisplayed) _interactionPromtUI.SetUp(_interactable.InteractionPrompt);
+
+                    Debug.Log($"{_actionable}, {this}");
+                    _actionable.ActionCancel(this);
                 }
             }
             else

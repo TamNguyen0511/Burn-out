@@ -1,104 +1,76 @@
-﻿using _Game.Scripts.Interact;
+﻿using System;
+using System.Numerics;
+using _Game.Scripts.Interact;
 using _Game.Scripts.Managers;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
+using Vector2 = UnityEngine.Vector2;
 
 namespace _Game.Scripts.Characters
 {
     public class PlayerInputHandle : Interactor
     {
         public CharacterHoldingObjectHandle CharacterHoldingObjectHandle;
+        public CharacterMovement CharacterMovement;
 
-        #region Serialize variables
-
-        [SerializeField, Range(0f, 10f)]
-        private float _moveSpeed;
-
-        #endregion
-
-        #region Local variables
-
-        private bool _isWalking;
-        [ReadOnly]
-        private float _rotateSpeed = 30f;
-
-        #endregion
+        private Vector2 _moveInput;
 
         #region Unity functions
 
         private void Start()
         {
-            InputManager.Instance.OnInteract += HandleInteraction;
-            InputManager.Instance.OnAction += HandleAction;
-
             // TODO: remove this duo to testing purpose
             if (CharacterHoldingObjectHandle == null && GetComponent<CharacterHoldingObjectHandle>() != null)
                 CharacterHoldingObjectHandle = GetComponent<CharacterHoldingObjectHandle>();
+            if (CharacterMovement == null && GetComponent<CharacterMovement>() != null)
+                CharacterMovement = GetComponent<CharacterMovement>();
         }
 
         private void Update()
         {
-            HandleMovement();
+            CharacterMovement.SetInputVector(_moveInput);
         }
 
         #endregion
 
         #region Local functions
 
-        private void HandleMovement()
+        public void OnMove(InputAction.CallbackContext context)
         {
-            Vector2 inputVector = InputManager.Instance.GetMovementVectorNormalized();
+            _moveInput = context.ReadValue<Vector2>();
+        }
 
-            Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-            // if (moveDir != Vector3.zero)
-            // {
-            //     lastInteractDir = moveDir;
-            // }
-
-            float moveDistance = _moveSpeed * Time.deltaTime;
-            float playerRadius = 0.4f;
-            float playerHeight = 1f;
-            bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight,
-                playerRadius, moveDir, moveDistance);
-
-            if (!canMove)
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
             {
-                Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
-                canMove = (moveDir.x < -0.5f || moveDir.x > 0.5f) && !Physics.CapsuleCast(transform.position,
-                    transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
-
-                if (canMove)
-                {
-                    moveDir = moveDirX;
-                }
-                else
-                {
-                    Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
-                    canMove = (moveDir.z < -0.5f || moveDir.z > 0.5f) && !Physics.CapsuleCast(transform.position,
-                        transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
-                    if (canMove)
-                    {
-                        moveDir = moveDirZ;
-                    }
-                }
+                case InputActionPhase.Started:
+                    break;
+                case InputActionPhase.Performed:
+                    InteractAction();
+                    break;
+                case InputActionPhase.Canceled:
+                    break;
             }
-            else
-                transform.position += moveDir * _moveSpeed * Time.deltaTime;
-
-            _isWalking = moveDir != Vector3.zero;
-
-            if (moveDir != Vector3.zero)
-                transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * _rotateSpeed);
         }
 
-        private void HandleInteraction(object sender, System.EventArgs e)
+        public void OnAction(InputAction.CallbackContext context)
         {
-            InteractAction();
-        }
-
-        private void HandleAction(object sender, System.EventArgs e)
-        {
-            ActionEvent();
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    break;
+                case InputActionPhase.Performed:
+                    Debug.Log("Action perform");
+                    ActionPerform();
+                    break;
+                case InputActionPhase.Canceled:
+                    Debug.Log("Action cancel");
+                    ActionCancel();
+                    break;
+            }
         }
 
         #endregion

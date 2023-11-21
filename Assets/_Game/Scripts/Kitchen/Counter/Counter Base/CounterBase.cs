@@ -28,6 +28,10 @@ namespace _Game.Scripts.Kitchen
         {
             
         }
+        public virtual void ActionCancel(Interactor interactor)
+        {
+            
+        }
 
         #endregion
 

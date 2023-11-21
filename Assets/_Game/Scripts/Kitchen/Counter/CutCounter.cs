@@ -57,7 +57,7 @@ namespace _Game.Scripts.Kitchen
         public override void OutputProcess(Interactor interactor)
         {
             if (_isProcessing) return;
-            
+
             interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject =
                 ContainingObject;
             interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject.transform
@@ -66,15 +66,20 @@ namespace _Game.Scripts.Kitchen
             interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject.transform
                 .localPosition = Vector3.zero;
             ContainingObject = null;
-            
+
             base.OutputProcess(interactor);
         }
 
         public override void Action(Interactor interactor)
         {
-            Debug.Log("Getted here");
             _isProcessing = true;
             base.Action(interactor);
+        }
+
+        public override void ActionCancel(Interactor interactor)
+        {
+            _isProcessing = false;
+            base.ActionCancel(interactor);
         }
 
         #endregion
