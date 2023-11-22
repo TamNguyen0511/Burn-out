@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a984e037d17b430b91c566d11a99e89c, type: 3}
   m_Name: IngredientCounter
   m_EditorClassIdentifier: 
+  CounterName: Free Counter
   CounterType: 2
   ProcessingSpeed: 0

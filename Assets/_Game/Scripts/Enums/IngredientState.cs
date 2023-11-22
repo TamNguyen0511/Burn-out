@@ -8,6 +8,7 @@
     {
         None,
         Raw,
+        Burned,
         Cut,
         Grill,
         Fry,

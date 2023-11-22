@@ -2,6 +2,7 @@
 using _Game.Scripts.Interact;
 using _Game.Scripts.Interfaces.Interact;
 using _Game.Scripts.ScriptableObjects;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Game.Scripts.Kitchen
@@ -11,6 +12,8 @@ namespace _Game.Scripts.Kitchen
         #region Serialize vairiables
 
         public CounterSO CounterStat;
+        [Title("Object to handle")]
+        public Ingredient ContainingObject;
 
         #endregion
 
@@ -26,11 +29,10 @@ namespace _Game.Scripts.Kitchen
 
         public virtual void Action(Interactor interactor)
         {
-            
         }
+
         public virtual void ActionCancel(Interactor interactor)
         {
-            
         }
 
         #endregion

@@ -21,7 +21,6 @@ namespace _Game.Scripts.Characters
 
         private void Start()
         {
-            // TODO: remove this duo to testing purpose
             if (CharacterHoldingObjectHandle == null && GetComponent<CharacterHoldingObjectHandle>() != null)
                 CharacterHoldingObjectHandle = GetComponent<CharacterHoldingObjectHandle>();
             if (CharacterMovement == null && GetComponent<CharacterMovement>() != null)

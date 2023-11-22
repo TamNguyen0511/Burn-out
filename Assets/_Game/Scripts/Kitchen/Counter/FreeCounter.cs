@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 namespace _Game.Scripts.Kitchen
 {
-    public class FreeCounter : KitchenToolCounter
+    public class FreeCounter : CounterBase
     {
         public Transform CounterTopPoint;
         // TODO: remove this duo to testing purpose

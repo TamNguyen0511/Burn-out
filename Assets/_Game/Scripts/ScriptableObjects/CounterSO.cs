@@ -1,4 +1,5 @@
 ﻿using _Game.Scripts.Enums;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Game.Scripts.ScriptableObjects
