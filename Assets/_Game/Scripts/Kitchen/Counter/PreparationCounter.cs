@@ -1,38 +1,46 @@
 ﻿using System;
-using _Game.Scripts.Characters;
 using _Game.Scripts.Enums;
 using _Game.Scripts.Interact;
 using _Game.Scripts.Interfaces.Interact;
-using _Game.Scripts.Managers;
-using Sirenix.OdinInspector;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace _Game.Scripts.Kitchen
 {
-    public class PreparationCounter : KitchenToolCounter, IActionable
+    public class PreparationCounter : KitchenToolCounter
     {
-        /// <summary>
-        /// Update need "_isProcessing" may only use in preparation counter duo to only preparation counter need character to stay  
-        /// </summary>
         private void Update()
         {
             if (!_isProcessing) return;
-            HandlingIngredient();
+            HandleIngredient();
         }
 
-        #region Counter Base
+        #region CounterBase
+
+        public override bool Interact(Interactor interactor)
+        {
+            return base.Interact(interactor);
+        }
 
         public override void HandleInput(Interactor interactor)
         {
+            Ingredient inputIngredient = interactor.ItemContainer.ContainingItem as Ingredient;
+
+            if (inputIngredient.CurrentState != InputState) return;
+
             base.HandleInput(interactor);
         }
 
-        public override void OutputProcess(Interactor interactor)
+        public override void HandleOutput(Interactor interactor)
         {
             if (_isProcessing) return;
-
-            base.OutputProcess(interactor);
+            
+            base.HandleOutput(interactor);
         }
+
+        #endregion
+
+        #region IActionable
 
         public override void Action(Interactor interactor)
         {
@@ -48,14 +56,16 @@ namespace _Game.Scripts.Kitchen
 
         #endregion
 
-        private void HandlingIngredient()
+        private void HandleIngredient()
         {
-            if (ContainingObject.CurrentState == HandleState) return;
+            Ingredient containingIngredient = ContainingObject.ContainingItem as Ingredient;
+            if (containingIngredient.CurrentState == HandleState) return;
+
             _currentProgress += Time.deltaTime;
             if (_currentProgress >= CounterStat.ProcessingSpeed)
             {
                 _currentProgress = 0;
-                ContainingObject.ChangeState(HandleState);
+                containingIngredient.ChangeState(HandleState);
                 _isProcessing = false;
             }
         }

@@ -1,62 +1,41 @@
-﻿using System;
-using _Game.Scripts.Characters;
-using _Game.Scripts.Interact;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using _Game.Scripts.Interact;
+using _Game.Scripts.Interfaces.Interact;
 
 namespace _Game.Scripts.Kitchen
 {
     public class FreeCounter : CounterBase
     {
-        public Transform CounterTopPoint;
-        // TODO: remove this duo to testing purpose
-
         public override bool Interact(Interactor interactor)
         {
+            if (ContainingObject.ContainingItem == null)
+                HandleInput(interactor);
+            else HandleOutput(interactor);
+
             return base.Interact(interactor);
         }
 
         public override void HandleInput(Interactor interactor)
         {
-            Ingredient objectToHandle = interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle
-                .HoldingObject;
+            IPickable itemToHandle = interactor.ItemContainer.ContainingItem;
 
-            if (objectToHandle == null)
-            {
-                Debug.Log($"{interactor.gameObject.name} have nothing for {gameObject.name} to handle input");
-                return;
-            }
+            if (itemToHandle == null) return;
 
-            ContainingObject = interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle
-                .HoldingObject;
-            ContainingObject.transform.SetParent(CounterTopPoint.transform);
-            ContainingObject.transform.localPosition = Vector3.zero;
+            interactor.ItemContainer.ContainingItem.GiveToContainer(ContainingObject);
+            ContainingObject.ContainingItem = interactor.ItemContainer.ContainingItem;
 
-            interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle
-                .HoldingObject = null;
+            interactor.ItemContainer.ContainingItem = null;
 
             base.HandleInput(interactor);
         }
 
-        public override void OutputProcess(Interactor interactor)
+        public override void HandleOutput(Interactor interactor)
         {
-            if (interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject != null)
-            {
-                Debug.Log(
-                    $"{interactor.gameObject.name} currently holding {interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject.name}, so it cannot holing more object");
-                return;
-            }
+            if (interactor.ItemContainer.ContainingItem != null) return;
 
-            interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject =
-                ContainingObject;
-            interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject.transform
-                .SetParent(interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle
-                    .HoldingObjectPosition);
-            interactor.GetComponent<PlayerInputHandle>().CharacterHoldingObjectHandle.HoldingObject.transform
-                .localPosition = Vector3.zero;
-            ContainingObject = null;
+            ContainingObject.ContainingItem.GiveToContainer(interactor.ItemContainer);
+            ContainingObject.ContainingItem = null;
 
-            base.OutputProcess(interactor);
+            base.HandleOutput(interactor);
         }
     }
 }

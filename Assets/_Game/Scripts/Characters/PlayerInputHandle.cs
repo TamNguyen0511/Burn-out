@@ -12,7 +12,7 @@ namespace _Game.Scripts.Characters
 {
     public class PlayerInputHandle : Interactor
     {
-        public CharacterHoldingObjectHandle CharacterHoldingObjectHandle;
+        // public CharacterHoldingObjectHandle CharacterHoldingObjectHandle;
         public CharacterMovement CharacterMovement;
 
         private Vector2 _moveInput;
@@ -21,8 +21,8 @@ namespace _Game.Scripts.Characters
 
         private void Start()
         {
-            if (CharacterHoldingObjectHandle == null && GetComponent<CharacterHoldingObjectHandle>() != null)
-                CharacterHoldingObjectHandle = GetComponent<CharacterHoldingObjectHandle>();
+            // if (CharacterHoldingObjectHandle == null && GetComponent<CharacterHoldingObjectHandle>() != null)
+            //     CharacterHoldingObjectHandle = GetComponent<CharacterHoldingObjectHandle>();
             if (CharacterMovement == null && GetComponent<CharacterMovement>() != null)
                 CharacterMovement = GetComponent<CharacterMovement>();
         }

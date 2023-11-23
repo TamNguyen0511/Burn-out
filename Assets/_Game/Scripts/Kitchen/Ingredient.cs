@@ -1,4 +1,7 @@
-﻿using _Game.Scripts.Enums;
+﻿using _Game.Scripts.Characters;
+using _Game.Scripts.Enums;
+using _Game.Scripts.Interact;
+using _Game.Scripts.Interfaces.Interact;
 using _Game.Scripts.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -6,7 +9,7 @@ using UnityEngine.UI;
 
 namespace _Game.Scripts.Kitchen
 {
-    public class Ingredient : MonoBehaviour
+    public class Ingredient : MonoBehaviour, IPickable
     {
         public Transform IngredientVisual;
         public IngredientSO IngredientData;
@@ -24,20 +27,34 @@ namespace _Game.Scripts.Kitchen
 
             if (IngredientVisual != null)
             {
-                Debug.Log("Getted here: " + CurrentState);
-                Debug.Log("Getted here: " +
-                          IngredientData.IngredientStateAndPrefab[CurrentState].IngredientStatePrefab);
                 var ingredient =
                     Instantiate(IngredientData.IngredientStateAndPrefab[CurrentState].IngredientStatePrefab,
                         IngredientVisual);
                 ingredient.transform.localPosition = Vector3.zero;
             }
-
-            // if (ingredientImageVisual != null)
-            // {
-            //     ingredientImageVisual.sprite =
-            //         IngredientData.IngredientStateAndPrefab[CurrentState].IngredientStateSprite;
-            // }
         }
+
+        #region IHoldable
+
+        public Transform ObjectTransform()
+        {
+            return transform;
+        }
+
+        public void GiveToContainer(PickableItemContainer container)
+        {
+            if (container.ContainingItem != null) return;
+
+            container.ContainingItem = this;
+            ObjectTransform().SetParent(container.ItemPosition);
+            ObjectTransform().localPosition = Vector3.zero;
+        }
+
+        public void PutDown(PickableItemContainer container)
+        {
+            if (container.ContainingItem != null) return;
+        }
+
+        #endregion
     }
 }

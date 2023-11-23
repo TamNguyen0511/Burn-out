@@ -17,6 +17,8 @@ namespace _Game.Scripts.Interact
         [SerializeField]
         private InteractionPromtUI _interactionPromtUI;
 
+        public PickableItemContainer ItemContainer;
+
         #endregion
 
         #region Local variables

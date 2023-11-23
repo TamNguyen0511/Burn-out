@@ -9,12 +9,12 @@ using UnityEngine;
 
 public class Test : Interactor
 {
-    public CounterBase TestCounter;
+    // public CounterBase TestCounter;
     public PlayerInputHandle TestPlayer;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            TestCounter.Interact(this);
+        // if (Input.GetKeyDown(KeyCode.Space))
+        //     TestCounter.Interact(this);
     }
 }

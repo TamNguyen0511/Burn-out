@@ -24,7 +24,7 @@ namespace _Game.Scripts
 
         #endregion
 
-        public UnitySerializedDictionary<CounterBase, GameObject> KitchenCounterPrefabDictionary =
-            new UnitySerializedDictionary<CounterBase, GameObject>();
+        // public UnitySerializedDictionary<CounterBase, GameObject> KitchenCounterPrefabDictionary =
+        //     new UnitySerializedDictionary<CounterBase, GameObject>();
     }
 }
