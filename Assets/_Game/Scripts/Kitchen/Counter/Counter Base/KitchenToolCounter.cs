@@ -38,7 +38,7 @@ namespace _Game.Scripts.Kitchen
         public override void HandleInput(Interactor interactor)
         {
             Ingredient ingredientToHandle = interactor.ItemContainer.ContainingItem as Ingredient;
-
+            Debug.Log(ingredientToHandle);
             if (ingredientToHandle.CurrentState != InputState) return;
             if (!ingredientToHandle.IngredientData.IngredientStateAndPrefab.ContainsKey(HandleState)) return;
 

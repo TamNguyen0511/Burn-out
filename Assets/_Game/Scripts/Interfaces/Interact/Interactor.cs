@@ -61,6 +61,7 @@ namespace _Game.Scripts.Interact
                     // if (!_interactionPromtUI.IsDisplayed) _interactionPromtUI.SetUp(_interactable.InteractionPrompt);
 
                     _interactable.Interact(this);
+                    Debug.Log($"{gameObject.name} interacted with {_interactable}");
                 }
             }
             else
@@ -73,8 +74,6 @@ namespace _Game.Scripts.Interact
 
         protected void ActionPerform()
         {
-            // _numFound = Physics2D.OverlapCircleNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders,
-            //     _interactableMask);
             _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders,
                 _interactableMask);
 
