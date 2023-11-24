@@ -7,8 +7,11 @@ using UnityEngine.XR;
 
 namespace _Game.Scripts.Kitchen
 {
-    public class KitchenTool : CookingCounter, IPickable
+    public class KitchenTool : KitchenToolCounter, IPickable
     {
+        [SerializeField]
+        protected float _burnTime;
+        
         public GasCounter GasCounter;
         
         #region Unity functions
@@ -36,7 +39,7 @@ namespace _Game.Scripts.Kitchen
             if (ContainingObject.ContainingItem == null)
                 HandleInput(interactor);
 
-            return base.Interact(interactor);
+            return true;
         }
 
         public override void HandleInput(Interactor interactor)
@@ -49,8 +52,6 @@ namespace _Game.Scripts.Kitchen
 
             interactor.ItemContainer.ContainingItem.GiveToContainer(ContainingObject);
             interactor.ItemContainer.ContainingItem = null;
-
-            base.HandleInput(interactor);
         }
 
         public override void HandleOutput(Interactor interactor)
@@ -62,8 +63,6 @@ namespace _Game.Scripts.Kitchen
 
             ContainingObject.ContainingItem.GiveToContainer(interactor.ItemContainer);
             ContainingObject.ContainingItem = null;
-
-            base.HandleOutput(interactor);
         }
 
         #endregion
