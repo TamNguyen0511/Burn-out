@@ -26,6 +26,7 @@ namespace _Game.Scripts.Kitchen
         {
             Ingredient inputIngredient = interactor.ItemContainer.ContainingItem as Ingredient;
 
+            if (inputIngredient == null) return;
             if (inputIngredient.CurrentState != InputState) return;
 
             base.HandleInput(interactor);

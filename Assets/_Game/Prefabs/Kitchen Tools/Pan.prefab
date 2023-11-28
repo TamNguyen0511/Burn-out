@@ -62,8 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CounterStat: {fileID: 11400000, guid: 1f6db25f362cc9042a235edbb3f942dc, type: 2}
   ContainingObject: {fileID: 5171443265759352183}
-  InputState: 8
-  HandleState: 32
+  InputState: 4
+  HandleState: 16
   _burnTime: 0
   GasCounter: {fileID: 0}
 --- !u!1 &7738085695827043876

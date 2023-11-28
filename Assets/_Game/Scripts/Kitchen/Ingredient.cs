@@ -17,7 +17,7 @@ namespace _Game.Scripts.Kitchen
 
         public void ChangeState(IngredientState newState /*, Image ingredientImageVisual = null*/)
         {
-            CurrentState = newState;
+            CurrentState |= newState;
 
             if (IngredientVisual.childCount > 0)
                 foreach (Transform child in IngredientVisual)

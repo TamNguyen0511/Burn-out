@@ -39,7 +39,7 @@ namespace _Game.Scripts.Kitchen
         {
             Ingredient ingredientToHandle = interactor.ItemContainer.ContainingItem as Ingredient;
             Debug.Log(ingredientToHandle);
-            if (ingredientToHandle.CurrentState != InputState) return;
+            if (!ingredientToHandle.CurrentState.HasFlag(InputState)) return;
             if (!ingredientToHandle.IngredientData.IngredientStateAndPrefab.ContainsKey(HandleState)) return;
 
             interactor.ItemContainer.ContainingItem.GiveToContainer(ContainingObject);
@@ -51,7 +51,7 @@ namespace _Game.Scripts.Kitchen
         public override void HandleOutput(Interactor interactor)
         {
             Ingredient ingredientToHandle = ContainingObject.ContainingItem as Ingredient;
-            if (ingredientToHandle.CurrentState != HandleState) return;
+            if (!ingredientToHandle.CurrentState.HasFlag(HandleState)) return;
 
             ContainingObject.ContainingItem.GiveToContainer(interactor.ItemContainer);
             ContainingObject.ContainingItem = null;

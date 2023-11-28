@@ -6,12 +6,12 @@
     [System.Flags]
     public enum IngredientState
     {
-        None = 1 << 0,
-        Raw = 1 << 1,
-        Burned = 1 << 2,
-        Cut = 1 << 3,
-        Grill = 1 << 4,
-        Fry = 1 << 5,
-        Steam = 1 << 6,
+        // None = 1 << 0,
+        Raw = 1 << 0,
+        Burned = 1 << 1,
+        Cut = 1 << 2,
+        Grill = 1 << 3,
+        Fry = 1 << 4,
+        Steam = 1 << 5,
     }
 }

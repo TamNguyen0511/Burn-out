@@ -1,16 +1,21 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using _Game.Scripts;
 using _Game.Scripts.Characters;
+using _Game.Scripts.Enums;
 using _Game.Scripts.Interact;
-using _Game.Scripts.Kitchen;
+using _Game.Scripts.ScriptableObjects;
 using UnityEngine;
 
-public class Test : Interactor
+public class Test : MonoBehaviour
 {
-    // public CounterBase TestCounter;
-    public PlayerInputHandle TestPlayer;
+    public IngredientState IngredientState;
+    public IngredientState IngredientStateTest;
+
+    private void Start()
+    {
+        Debug.Log(IngredientState);
+        Debug.Log(IngredientStateTest);
+        Debug.Log(IngredientState.HasFlag(IngredientStateTest));
+    }
 
     private void Update()
     {
