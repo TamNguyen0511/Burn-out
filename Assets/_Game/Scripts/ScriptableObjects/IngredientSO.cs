@@ -17,7 +17,7 @@ namespace _Game.Scripts.ScriptableObjects
         /// </summary>
         [SerializeField]
         private UnitySerializedDictionary<IngredientState, IngredientStateVisualInformation> _ingredientStateAndPrefab =
-            new UnitySerializedDictionary<IngredientState, IngredientStateVisualInformation>();
+            new();
 
         public UnitySerializedDictionary<IngredientState, IngredientStateVisualInformation> IngredientStateAndPrefab
         {

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e39531072394e569fc6e8f76f4a6783, type: 3}
   m_Name: Beef Hamburger
   m_EditorClassIdentifier: 
+  ToolToServe: 0
   DiskName: BeefBurger
   RecipeRequirement:
-    keyData:
-    - {fileID: 11400000, guid: b5ec86bd5c12f38428bc621da1ead7e4, type: 2}
-    - {fileID: 11400000, guid: d3ffaaf400e1a224182596f3610e5cb8, type: 2}
-    valueData: 1600000001000000
+  - {fileID: 6337300011907178415, guid: a78d13f03f2a8234faf11916e8ae56e1, type: 3}
   DiskImage: {fileID: 0}
