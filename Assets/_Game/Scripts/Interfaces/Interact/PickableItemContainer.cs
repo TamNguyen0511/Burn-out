@@ -7,7 +7,7 @@ namespace _Game.Scripts.Interfaces.Interact
 {
     public class PickableItemContainer : MonoBehaviour
     {
-        [ShowInInspector]
+        [ShowInInspector, ReadOnly]
         public IPickable ContainingItem;
         public Transform ItemPosition;
     }

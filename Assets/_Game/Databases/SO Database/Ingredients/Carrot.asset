@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ingredientName: Carrot
   _ingredientStateAndPrefab:
-    keyData: 020000002000000008000000
+    keyData: 010000001400000004000000
     valueData:
     - IngredientStatePrefab: {fileID: 919132149155446097, guid: 8ae01ba2a22891c4cadd3ede933f3083,
         type: 3}
