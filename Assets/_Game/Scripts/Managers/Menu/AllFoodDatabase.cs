@@ -8,7 +8,8 @@ namespace _Game.Scripts.Managers.Menu
     [CreateAssetMenu(fileName = "FoodDatabase", menuName = "RestaurantGame/AllFood", order = 0)]
     public class AllFoodDatabase : ScriptableObject
     {
-        public List<IngredientSO> AllIngredients = new();
+        public List<IngredientSO> AllPrepableIngredients = new();
+        public List<IngredientSO> AllNonprepIngredients = new();
         public List<RecipeSO> AllRecipe = new();
     }
 }

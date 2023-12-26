@@ -35,10 +35,13 @@ namespace _Game.Scripts.Managers.Menu
 
         #endregion
 
-        private void ChangeMenuStage(CreateMenuState newState)
+        private void OnEnable()
         {
-            if (_currentMenuState == newState) return;
-            _currentMenuState = newState;
+            _nextStageBtn.onClick.AddListener(ChangeMenuStage);
+        }
+
+        private void ChangeMenuStage()
+        {
             switch (_currentMenuState)
             {
                 case CreateMenuState.ChoosingIngredients:
@@ -60,16 +63,16 @@ namespace _Game.Scripts.Managers.Menu
             void ShowIngredients()
             {
                 ClearPoolBtn();
-                if (_buttonPool.Count < _foodDatabase.AllIngredients.Count)
+                if (_buttonPool.Count < _foodDatabase.AllPrepableIngredients.Count)
                 {
                     _buttonPool = Pool.Create(_chooserBtnPrefab,
-                        _foodDatabase.AllIngredients.Count - _buttonPool.Count, _choosePnl.transform);
+                        _foodDatabase.AllPrepableIngredients.Count - _buttonPool.Count, _choosePnl.transform);
                 }
 
-                for (int i = 0; i < _foodDatabase.AllIngredients.Count; i++)
+                for (int i = 0; i < _foodDatabase.AllPrepableIngredients.Count; i++)
                 {
                     Button btn = _buttonPool.Get();
-                    btn.GetComponent<Image>().sprite = _foodDatabase.AllIngredients[i]
+                    btn.GetComponent<Image>().sprite = _foodDatabase.AllPrepableIngredients[i]
                         .IngredientStateAndPrefab[IngredientState.Raw].IngredientStateSprite;
                     btn.onClick.AddListener(_menuManager.AddIngredients);
                 }
