@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/_Game/Scenes/Story/DontdestroyOnLoad.unity
+    guid: 45a90490644dd514c8acab38d0110f5b
+  - enabled: 1
+    path: Assets/_Game/Scenes/Story/Earth.unity
+    guid: 98931f5c4c1af6d44b3639c151367fb8
   m_configObjects: {}
