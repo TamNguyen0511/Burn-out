@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+  - World Controller
   layers:
   - Default
   - TransparentFX

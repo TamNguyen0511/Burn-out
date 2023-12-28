@@ -10,7 +10,7 @@ namespace _Game.Scripts.ScriptableObjects.World_Area
         public Enums.World AreaWorld; 
         public string AreaName;
 
-        public MultiSceneCameraType AreaCamType;
+        public WorldCameraType AreaCamType;
         public Vector3 TeleportToPosition;
 
 #if UNITY_EDITOR

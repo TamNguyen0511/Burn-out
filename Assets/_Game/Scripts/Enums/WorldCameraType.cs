@@ -1,6 +1,6 @@
 ﻿namespace _Game.Scripts.Enums
 {
-    public enum MultiSceneCameraType
+    public enum WorldCameraType
     {
         None,
         Follow,
